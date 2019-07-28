@@ -50,8 +50,8 @@
   )
 
 enum layer_number {
-  _QWERTY = 0,
-  _LOWER,
-  _RAISE,
-  _ADJUST,
+  _DEFAULT = 0,
+  _SYMBOL,
+  _NUMBER,
+  _FUNCTION
 };
