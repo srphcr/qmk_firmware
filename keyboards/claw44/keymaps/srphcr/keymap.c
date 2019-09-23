@@ -11,21 +11,23 @@ extern keymap_config_t keymap_config;
 
 extern uint8_t is_master;
 
-enum custom_keycodes {
-    DEFAULT = SAFE_RANGE,
-    SYMBOL,
-    NUMBER,
-    FUNCTION
-};
+/* enum custom_keycodes { */
+/*     DEFAULT = SAFE_RANGE, */
+/*     SYMBOL, */
+/*     NUMBER, */
+/*     FUNCTION */
+/* }; */
 
 // Tap Dance
-enum {
-    TAP_SYMBOL_SPC = 0,
-    TAP_NUMBER_TAB
-};
+/* enum { */
+/*     TAP_SYMBOL_SPC = 0, */
+/*     TAP_NUMBER_TAB */
+/* }; */
 
-#define KC_S_SPC TD(TAP_SYMBOL_SPC)
-#define KC_N_TAB TD(TAP_NUMBER_TAB)
+/* #define KC_S_SPC TD(TAP_SYMBOL_SPC) */
+/* #define KC_N_TAB TD(TAP_NUMBER_TAB) */
+#define KC_S_SPC LT(_SYMBOL, KC_SPC)
+#define KC_N_TAB LT(_NUMBER, KC_TAB)
 #define KC_FUNC TT(_FUNCTION)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -44,7 +46,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         ),
 
     [_NUMBER] = LAYOUT(
-        KC_TRNS,  KC_P1,  KC_P2,    KC_P3,    KC_P4,    KC_P5,      KC_P6,    KC_P7,    KC_P8,    KC_P9,   KC_P0,  KC_TRNS,
+        KC_TRNS,  KC_NO,  KC_NO,    KC_NO,    KC_NO,    KC_NO,      KC_NO,    KC_NO,    KC_NO,    KC_NO,   KC_NO,  KC_TRNS,
         KC_TRNS,  KC_P1,  KC_P2,    KC_P3,    KC_P4,    KC_P5,      KC_P6,    KC_P7,    KC_P8,    KC_P9,   KC_P0,  KC_TRNS,
         KC_TRNS,  KC_NO,  KC_NO,    KC_NO,    KC_NO,    KC_NO,      KC_NO,    KC_NO,    KC_NO,    KC_NO,   KC_NO,  KC_TRNS,
                           KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,    KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS
@@ -126,166 +128,166 @@ void iota_gfx_task_user(void) {
 #endif//SSD1306OLED
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    if (record->event.pressed) {
-#ifdef SSD1306OLED
-        /* set_keylog(keycode, record); */
-#endif
-        // set_timelog();
-    }
+/*     if (record->event.pressed) { */
+/* #ifdef SSD1306OLED */
+/*         /\* set_keylog(keycode, record); *\/ */
+/* #endif */
+/*         // set_timelog(); */
+/*     } */
 
-    switch (keycode) {
-    case DEFAULT:
-        if (record->event.pressed) {
-            set_single_persistent_default_layer(_DEFAULT);
-        }
-        return false;
-        break;
+    /* switch (keycode) { */
+    /* case DEFAULT: */
+    /*     if (record->event.pressed) { */
+    /*         set_single_persistent_default_layer(_DEFAULT); */
+    /*     } */
+    /*     return false; */
+    /*     break; */
 
-    case SYMBOL:
-        if (record->event.pressed) {
-            layer_on(_SYMBOL);
-        } else {
-            layer_off(_SYMBOL);
-        }
-        return false;
-        break;
+    /* case SYMBOL: */
+    /*     if (record->event.pressed) { */
+    /*         layer_on(_SYMBOL); */
+    /*     } else { */
+    /*         layer_off(_SYMBOL); */
+    /*     } */
+    /*     return false; */
+    /*     break; */
 
-    case NUMBER:
-        if (record->event.pressed) {
-            layer_on(_NUMBER);
-        } else {
-            layer_off(_NUMBER);
-        }
-        return false;
-        break;
+    /* case NUMBER: */
+    /*     if (record->event.pressed) { */
+    /*         layer_on(_NUMBER); */
+    /*     } else { */
+    /*         layer_off(_NUMBER); */
+    /*     } */
+    /*     return false; */
+    /*     break; */
 
-    case FUNCTION:
-        if (record->event.pressed) {
-            layer_on(_FUNCTION);
-        } else {
-            layer_off(_FUNCTION);
-        }
-        return false;
-        break;
-    }
+    /* case FUNCTION: */
+    /*     if (record->event.pressed) { */
+    /*         layer_on(_FUNCTION); */
+    /*     } else { */
+    /*         layer_off(_FUNCTION); */
+    /*     } */
+    /*     return false; */
+    /*     break; */
+    /* } */
     return true;
 }
 
 // Tap Dances
-enum {
-  SINGLE_TAP = 1,
-  SINGLE_HOLD = 2,
-  DOUBLE_TAP = 3,
-};
+/* enum { */
+/*   SINGLE_TAP = 1, */
+/*   SINGLE_HOLD = 2, */
+/*   DOUBLE_TAP = 3, */
+/* }; */
 
-typedef struct {
-  bool is_press_action;
-  int state;
-} tap;
+/* typedef struct { */
+/*   bool is_press_action; */
+/*   int state; */
+/* } tap; */
 
-int cur_dance (qk_tap_dance_state_t *state) {
-  if (state->count == 1) {
-      if (!state->pressed) {
-          return SINGLE_TAP;
+/* int cur_dance (qk_tap_dance_state_t *state) { */
+/*   if (state->count == 1) { */
+/*       if (!state->pressed) { */
+/*           return SINGLE_TAP; */
 
-      } else {
-          return SINGLE_HOLD;
-      }
+/*       } else { */
+/*           return SINGLE_HOLD; */
+/*       } */
 
-  } else if (state->count == 2) {
-    return DOUBLE_TAP;
+/*   } else if (state->count == 2) { */
+/*     return DOUBLE_TAP; */
 
-  } else {
-      return 6;
-  }
-}
+/*   } else { */
+/*       return 6; */
+/*   } */
+/* } */
 
-static tap tap_state = {
-  .is_press_action = true,
-  .state = 0
-};
+/* static tap tap_state = { */
+/*   .is_press_action = true, */
+/*   .state = 0 */
+/* }; */
 
-void tap_symbol_space (qk_tap_dance_state_t *state, void *user_data) {
-    tap_state.state = cur_dance(state);
+/* void tap_symbol_space (qk_tap_dance_state_t *state, void *user_data) { */
+/*     tap_state.state = cur_dance(state); */
 
-    switch (tap_state.state) {
-    case SINGLE_TAP:
-        if (IS_LAYER_ON(_SYMBOL)){
-            layer_off(_SYMBOL);
+/*     switch (tap_state.state) { */
+/*     case SINGLE_TAP: */
+/*         if (IS_LAYER_ON(_SYMBOL)){ */
+/*             layer_off(_SYMBOL); */
 
-        } else {
-            register_code(KC_SPC);
-        }
-        break;
+/*         } else { */
+/*             register_code(KC_SPC); */
+/*         } */
+/*         break; */
 
-    case SINGLE_HOLD:
-        layer_on(_SYMBOL);
-        break;
+/*     case SINGLE_HOLD: */
+/*         layer_on(_SYMBOL); */
+/*         break; */
 
-    case DOUBLE_TAP:
-        layer_invert(_SYMBOL);
-        break;
-    }
-}
+/*     case DOUBLE_TAP: */
+/*         layer_invert(_SYMBOL); */
+/*         break; */
+/*     } */
+/* } */
 
-void reset_tap_symbol_space (qk_tap_dance_state_t *state, void *user_data) {
-    switch (tap_state.state) {
-    case SINGLE_TAP:
-        unregister_code(KC_SPC);
-        break;
+/* void reset_tap_symbol_space (qk_tap_dance_state_t *state, void *user_data) { */
+/*     switch (tap_state.state) { */
+/*     case SINGLE_TAP: */
+/*         unregister_code(KC_SPC); */
+/*         break; */
 
-    case SINGLE_HOLD:
-        layer_off(_SYMBOL);
-        break;
+/*     case SINGLE_HOLD: */
+/*         layer_off(_SYMBOL); */
+/*         break; */
 
-    case DOUBLE_TAP:
-        break;
-    }
+/*     case DOUBLE_TAP: */
+/*         break; */
+/*     } */
 
-    tap_state.state = 0;
-}
+/*     tap_state.state = 0; */
+/* } */
 
-void tap_number_tab (qk_tap_dance_state_t *state, void *user_data) {
-    tap_state.state = cur_dance(state);
+/* void tap_number_tab (qk_tap_dance_state_t *state, void *user_data) { */
+/*     tap_state.state = cur_dance(state); */
 
-    switch (tap_state.state) {
-    case SINGLE_TAP:
-        if (IS_LAYER_ON(_NUMBER)){
-            layer_off(_NUMBER);
+/*     switch (tap_state.state) { */
+/*     case SINGLE_TAP: */
+/*         if (IS_LAYER_ON(_NUMBER)){ */
+/*             layer_off(_NUMBER); */
 
-        } else {
-            register_code(KC_TAB);
-        }
-        break;
+/*         } else { */
+/*             register_code(KC_TAB); */
+/*         } */
+/*         break; */
 
-    case SINGLE_HOLD:
-        layer_on(_NUMBER);
-        break;
+/*     case SINGLE_HOLD: */
+/*         layer_on(_NUMBER); */
+/*         break; */
 
-    case DOUBLE_TAP:
-        layer_invert(_NUMBER);
-        break;
-    }
-}
+/*     case DOUBLE_TAP: */
+/*         layer_invert(_NUMBER); */
+/*         break; */
+/*     } */
+/* } */
 
-void reset_tap_number_tab (qk_tap_dance_state_t *state, void *user_data) {
-    switch (tap_state.state) {
-    case SINGLE_TAP:
-        unregister_code(KC_TAB);
-        break;
+/* void reset_tap_number_tab (qk_tap_dance_state_t *state, void *user_data) { */
+/*     switch (tap_state.state) { */
+/*     case SINGLE_TAP: */
+/*         unregister_code(KC_TAB); */
+/*         break; */
 
-    case SINGLE_HOLD:
-        layer_off(_NUMBER);
-        break;
+/*     case SINGLE_HOLD: */
+/*         layer_off(_NUMBER); */
+/*         break; */
 
-    case DOUBLE_TAP:
-        break;
-    }
+/*     case DOUBLE_TAP: */
+/*         break; */
+/*     } */
 
-    tap_state.state = 0;
-}
+/*     tap_state.state = 0; */
+/* } */
 
-qk_tap_dance_action_t tap_dance_actions[] = {
-    [TAP_SYMBOL_SPC] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, tap_symbol_space, reset_tap_symbol_space),
-    [TAP_NUMBER_TAB] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, tap_number_tab, reset_tap_number_tab)
-};
+/* qk_tap_dance_action_t tap_dance_actions[] = { */
+/*     [TAP_SYMBOL_SPC] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, tap_symbol_space, reset_tap_symbol_space), */
+/*     [TAP_NUMBER_TAB] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, tap_number_tab, reset_tap_number_tab) */
+/* }; */
