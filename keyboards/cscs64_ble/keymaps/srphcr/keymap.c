@@ -25,6 +25,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 enum layer_number {
     _DEFAULT = 0,
     _SYMBOL,
+    _NUMBER,
     _CONFIG,
 };
 
@@ -63,65 +64,87 @@ const uint16_t keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * ,-----------------------------------------.             ,-----------------------------------------.
    * | ESC  |   1  |   2  |   3  |   4  |   5  |             |   6  |   7  |   8  |   9  |   0  |  BS  |
    * |------+------+------+------+------+------+------+------+------+------+------+------+------+------|
-   * | Tab  |   Q  |   W  |   E  |   R  |   T  |   -  |   =  |   Y  |   U  |   I  |   O  |   P  |  \   |
+   * |      |   Q  |   W  |   E  |   R  |   T  |   -  |   =  |   Y  |   U  |   I  |   O  |   P  |   \  |
    * |------+------+------+------+------+------+------+------+------+------+------+------+------+------|
-   * | Ctrl |   A  |   S  |   D  |   F  |   G  |   [  |   ]  |   H  |   J  |   K  |   L  |   ;  | Enter|
+   * |Config|   A  |   S  |   D  |   F  |   G  |   [  |   ]  |   H  |   J  |   K  |   L  |   ;  | Enter|
    * |------+------+------+------+------+------+------+------+------+------+------+------+------+------|
-   * | Shift|   Z  |   X  |   C  |   V  |   B  |   `  |   '  |   N  |   M  |   ,  |   .  |   /  | Shift|
+   * |Shift |   Z  |   X  |   C  |   V  |   B  |   `  |   '  |   N  |   M  |   ,  |   .  |   /  | Shift|
    * |------+------+------+------+------+------+------+------+------+------+------+------+------+------|
-   * |Config|      |  GUI | Ctrl | LANG | Space|             | Enter|  BS  | Ctrl |  Alt |      |Symbol|
+   * |Number|      |  Alt |  GUI | Ctrl |  TAB |             | Space| Ctrl |  GUI |  Alt |      |Symbol|
    * `------+      +---------------------------+             +---------------------------+      +------'
    */
   [_DEFAULT] = LAYOUT(
-    KC_ESC,      KC_1, KC_2,    KC_3,    KC_4,         KC_5,                      KC_6,   KC_7,    KC_8,    KC_9,    KC_0,    KC_BSPC,
-    KC_TAB,      KC_Q, KC_W,    KC_E,    KC_R,         KC_T,   KC_MINS,  KC_EQL,  KC_Y,   KC_U,    KC_I,    KC_O,    KC_P,    KC_BSLS,
-    KC_LCTL,     KC_A, KC_S,    KC_D,    KC_F,         KC_G,   KC_LBRC,  KC_RBRC, KC_H,   KC_J,    KC_K,    KC_L,    KC_SCLN, KC_ENT,
-    KC_LSFT,     KC_Z, KC_X,    KC_C,    KC_V,         KC_B,   KC_GRV,   KC_QUOT, KC_N,   KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
-    TT(_CONFIG),       KC_LGUI, KC_LCTL, LGUI(KC_SPC), KC_SPC,                    KC_ENT, KC_BSPC, KC_RCTL, KC_RALT,          TT(_SYMBOL)
+    KC_ESC,       KC_1,  KC_2,     KC_3,     KC_4,     KC_5,                         KC_6,    KC_7,     KC_8,     KC_9,     KC_0,     KC_BSPC,
+    KC_NO,        KC_Q,  KC_W,     KC_E,     KC_R,     KC_T,    KC_MINS,   KC_EQL,   KC_Y,    KC_U,     KC_I,     KC_O,     KC_P,     KC_BSLS,
+    TT(_CONFIG),  KC_A,  KC_S,     KC_D,     KC_F,     KC_G,    KC_LBRC,   KC_RBRC,  KC_H,    KC_J,     KC_K,     KC_L,     KC_SCLN,  KC_ENT,
+    KC_LSFT,      KC_Z,  KC_X,     KC_C,     KC_V,     KC_B,    KC_GRV,    KC_QUOT,  KC_N,    KC_M,     KC_COMM,  KC_DOT,   KC_SLSH,  KC_RSFT,
+    TT(_NUMBER),         KC_LALT,  KC_LGUI,  KC_LCTL,  KC_TAB,                       KC_SPC,  KC_RCTL,  KC_RGUI,  KC_RALT,            TT(_SYMBOL)
     ),
 
   /*
    * Symbol
    * ,-----------------------------------------.             ,-----------------------------------------.
-   * |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |             |  F7  |  F8  |  F9  |  F10 |  F11 |  F12 |
+   * |      |      |      |      |      |      |             |      |      |      |      |      |      |
    * |------+------+------+------+------+------+------+------+------+------+------+------+------+------|
-   * | ESC  |   !  |   @  |   #  |   $  |   %  |   -  |   =  |   ^  |   &  |   *  |   (  |   )  |      |
+   * |      |   !  |   @  |   #  |   $  |   %  |      |      |   ^  |   &  |   *  |      |      |      |
    * |------+------+------+------+------+------+------+------+------+------+------+------+------+------|
-   * |      |      |      |  ↑  |      |      |   [  |   ]  |      |      |      |      |   ;  |      |
+   * |      |      |   `  |   (  |   [  |   -  |      |      |   =  |   ]  |   )  |   '  |   \  |      |
    * |------+------+------+------+------+------+------+------+------+------+------+------+------+------|
-   * |      |      |  ←  |      |  →  |      |   `  |   '  |      |      |   ,  |   .  |   /  |      |
+   * |      |      |   ~  |   <  |   {  |   _  |      |      |   +  |   }  |   >  |   "  |   |  |      |
    * |------+------+------+------+------+------+------+------+------+------+------+------+------+------|
-   * |Config|      |  GUI |  ↓  | LANG | Space|             | Enter|  BS  | Ctrl |  Alt |      |Symbol|
+   * |      |      |  Alt |  GUI | Ctrl |  TAB |             | Space| Ctrl |  GUI |  Alt |      |Symbol|
    * `------+      +---------------------------+             +---------------------------+      +------'
    */
   [_SYMBOL] = LAYOUT(
-    KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,                      KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,
-    KC_ESC,  KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_TRNS,  KC_TRNS, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_NO,
-    KC_NO,   KC_NO,   KC_NO,   KC_UP,   KC_NO,   KC_NO,   KC_TRNS,  KC_TRNS, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_TRNS, KC_NO,
-    KC_NO,   KC_NO,   KC_LEFT, KC_NO,   KC_RGHT, KC_NO,   KC_TRNS,  KC_TRNS, KC_NO,   KC_NO,   KC_TRNS, KC_TRNS, KC_TRNS, KC_NO,
-    KC_TRNS,          KC_TRNS, KC_DOWN, KC_TRNS, KC_TRNS,                    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,          KC_TRNS
+    KC_NO,  KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,                     KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,
+    KC_NO,  KC_EXLM,  KC_AT,    KC_HASH,  KC_DLR,   KC_PERC,  KC_NO,   KC_NO,  KC_CIRC,  KC_AMPR,  KC_ASTR,  KC_NO,    KC_NO,    KC_NO,
+    KC_NO,  KC_NO,    KC_GRV,   KC_LPRN,  KC_LBRC,  KC_MINS,  KC_NO,   KC_NO,  KC_EQL,   KC_RBRC,  KC_RPRN,  KC_QUOT,  KC_BSLS,  KC_NO,
+    KC_NO,  KC_NO,    KC_TILD,  KC_LT,    KC_LCBR,  KC_UNDS,  KC_NO,   KC_NO,  KC_PLUS,  KC_RCBR,  KC_GT,    KC_DQT,   KC_PIPE,  KC_NO,
+    KC_NO,            KC_TRNS,  KC_DOWN,  KC_TRNS,  KC_TRNS,                   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,            KC_TRNS
+    ),
+
+  /*
+   * Number
+   * ,-----------------------------------------.             ,-----------------------------------------.
+   * |      |      |      |      |      |      |             |      |      |      |      |      |      |
+   * |------+------+------+------+------+------+------+------+------+------+------+------+------+------|
+   * |      |      |      |      |      |      |      |      |      |      |      |      |      |      |
+   * |------+------+------+------+------+------+------+------+------+------+------+------+------+------|
+   * |      |  1   |  2   |  3   |  4   |  5   |      |      |  6   |  7   |  8   |  9   |  0   |      |
+   * |------+------+------+------+------+------+------+------+------+------+------+------+------+------|
+   * |      |      |      |      |      |      |      |      |      |      |      |      |      |      |
+   * |------+------+------+------+------+------+------+------+------+------+------+------+------+------|
+   * |Number|      |  Alt |  GUI | Ctrl |  TAB |             | Space| Ctrl |  GUI |  Alt |      |      |
+   * `------+      +---------------------------+             +---------------------------+      +------'
+   */
+  [_NUMBER] = LAYOUT(
+    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,                     KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,
+    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,   KC_NO,  KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,
+    KC_NO,    KC_P1,    KC_P2,    KC_P3,    KC_P4,    KC_P5,    KC_NO,   KC_NO,  KC_P6,    KC_P7,    KC_P8,    KC_P9,    KC_P0,    KC_NO,
+    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,   KC_NO,  KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,
+    KC_TRNS,            KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,                   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,            KC_NO
     ),
 
   /*
    * Config
-   * ,-----------------------------------------.             ,-----------------------------------------.
-   * |RESET | ADV1 | ADV2 | ADV3 | ADV4 | ADV5 |             | DEL1 | DEL2 | DEL3 | DEL4 | DEL5 |  SLP |
+   * |------+------+------+------+------+------.             ,------+------+------+------+------+------|
+   * |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |             |  F7  |  F8  |  F9  |  F10 |  F11 |  F12 |
+   * ,-----------------------------------------+------+------+-----------------------------------------.
+   * |RESET | ADV1 | ADV2 | ADV3 | ADV4 | ADV5 |      |      | DEL1 | DEL2 | DEL3 | DEL4 | DEL5 |  SLP |
    * |------+------+------+------+------+------+------+------+------+------+------+------+------+------|
-   * | DFU  |      |      |      |      |      | SWAP | SWAP |      |      |      |      |      |      |
+   * |Config|      |      |      |      |      |      |      |      |      |      |      |      |      |
    * |------+------+------+------+------+------+------+------+------+------+------+------+------+------|
-   * |      |      |      |      |      |      | NORM | NORM |      |      |      |      |      |      |
+   * |      |      |      |      |SELBLE|SELUSB|  DFU | BATT |AU_ON |AU_OFF|      |      |      |      |
    * |------+------+------+------+------+------+------+------+------+------+------+------+------+------|
-   * |      |SELBLE|SELUSB|      |      | ADV  | BATT |      |AU_ON |AU_OFF|      |      |      |      |
-   * |------+------+------+------+------+------+------+------+------+------+------+------+------+------|
-   * |Config|      |      |      |      |      |             |      |      |      |      |      |Symbol|
+   * |      |      |      |      |      |  ADV |             |      |      |      |      |      |      |
    * `------+      +---------------------------+             +---------------------------+      +------'
    */
   [_CONFIG] =  LAYOUT(
-    RESET,   ADV_ID1, ADV_ID2, ADV_ID3, ADV_ID4, ADV_ID5,                    DEL_ID1, DEL_ID2, DEL_ID3, DEL_ID4, DEL_ID5, ENT_SLP,
-    ENT_DFU, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   AG_SWAP,  AG_SWAP, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-    KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   AG_NORM,  AG_NORM, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-    KC_NO,   SEL_BLE, SEL_USB, KC_NO,   KC_NO,   AD_WO_L, BATT_LV,  KC_NO,   AU_ON,   AU_OFF,  KC_NO,   KC_NO,   KC_NO,   KC_NO,
-    KC_TRNS,          KC_NO,   KC_NO,   KC_NO,   KC_NO,                      KC_NO,   KC_NO,   KC_NO,   KC_NO,            KC_TRNS
+    KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,    KC_F6,                         KC_F7,    KC_F8,    KC_F9,    KC_F10,   KC_F11,   KC_F12,
+    RESET,    ADV_ID1,  ADV_ID2,  ADV_ID3,  ADV_ID4,  ADV_ID5,  KC_NO,     KC_NO,    DEL_ID1,  DEL_ID2,  DEL_ID3,  DEL_ID4,  DEL_ID5,  ENT_SLP,
+    KC_TRNS,  KC_NO,    KC_NO,    KC_NO,    SEL_BLE,  SEL_USB,  ENT_DFU,   BATT_LV,  AU_ON,    AU_OFF,   KC_NO,    KC_NO,    KC_NO,    KC_NO,
+    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,     KC_NO,    KC_NO,    KC_LEFT,  KC_UP,    KC_RGHT,  KC_NO,    KC_NO,
+    KC_NO,              KC_NO,    KC_NO,    KC_NO,    AD_WO_L,                       KC_NO,    KC_NO,    KC_DOWN,  KC_NO,              KC_NO
     ),
 };
 
