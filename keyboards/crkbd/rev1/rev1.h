@@ -52,3 +52,10 @@
                                             KC_##L30, KC_##L31, KC_##L32, KC_##R30, KC_##R31, KC_##R32 \
   )
 // clang-format on
+
+enum layer_number {
+    _DEFAULT = 0,
+    _SYMBOL,
+    _NUMBER,
+    _FUNCTION
+};
