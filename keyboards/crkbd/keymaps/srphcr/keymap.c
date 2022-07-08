@@ -27,9 +27,9 @@ enum layer_number {
     _FUNCTION,
 };
 
-#define KC_TT_SYM TT(_SYMBOL)
-#define KC_TT_NUM TT(_NUMBER)
-#define KC_TT_FUN TT(_FUNCTION)
+#define KC_TT_SYM MO(_SYMBOL)
+#define KC_TT_NUM MO(_NUMBER)
+#define KC_TT_FUN MO(_FUNCTION)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_DEFAULT] = LAYOUT(
