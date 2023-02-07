@@ -27,16 +27,16 @@ enum layer_number {
     _FUNCTION,
 };
 
-#define KC_TT_SYM TT(_SYMBOL)
-#define KC_TT_NUM TT(_NUMBER)
-#define KC_TT_FUN TT(_FUNCTION)
+#define KC_MO_SYM MO(_SYMBOL)
+#define KC_MO_NUM MO(_NUMBER)
+#define KC_MO_FUN MO(_FUNCTION)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_DEFAULT] = LAYOUT(
         KC_ESC,     KC_Q,  KC_W,  KC_E,     KC_R,       KC_T,             KC_Y,           KC_U,       KC_I,     KC_O,    KC_P,     KC_BSPC,
-        KC_TT_FUN,  KC_A,  KC_S,  KC_D,     KC_F,       KC_G,             KC_H,           KC_J,       KC_K,     KC_L,    KC_SCLN,  KC_ENT,
+        KC_MO_FUN,  KC_A,  KC_S,  KC_D,     KC_F,       KC_G,             KC_H,           KC_J,       KC_K,     KC_L,    KC_SCLN,  KC_ENT,
         KC_LSFT,    KC_Z,  KC_X,  KC_C,     KC_V,       KC_B,             KC_N,           KC_M,       KC_COMM,  KC_DOT,  KC_SLSH,  KC_RSFT,
-                                  KC_LGUI,  KC_TT_NUM,  CTL_T(KC_TAB),    CTL_T(KC_SPC),  KC_TT_SYM,  KC_RALT
+                                  KC_LGUI,  KC_MO_NUM,  CTL_T(KC_TAB),    CTL_T(KC_SPC),  KC_MO_SYM,  KC_RALT
     ),
     [_SYMBOL] = LAYOUT(
         KC_TRNS,  KC_EXLM,  KC_AT,    KC_HASH,  KC_DLR,   KC_PERC,    KC_CIRC,  KC_AMPR,  KC_ASTR,  KC_NO,    KC_NO,    KC_TRNS,
