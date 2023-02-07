@@ -31,6 +31,7 @@ enum layer_number {
 #define KC_MO_SYM MO(_SYMBOL)
 #define KC_MO_NUM MO(_NUMBER)
 #define KC_MO_FUN MO(_FUNCTION)
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_DEFAULT] = LAYOUT(
         KC_ESC,     KC_Q,  KC_W,     KC_E,       KC_R,     KC_T,      KC_Y,    KC_U,     KC_I,       KC_O,    KC_P,     KC_BSPC,
