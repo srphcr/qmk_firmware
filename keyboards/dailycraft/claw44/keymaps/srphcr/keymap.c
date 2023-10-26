@@ -119,7 +119,7 @@ const char *read_keylog(void) { return keylog_str; }
 const char *read_keylogs(void) { return keylogs_str; }
 
 bool oled_task_user(void) {
-    if (is_keyboard_master()) {
+    if (is_keyboard_left()) {
         render_layer_state();
         /* oled_write_ln(read_keylog(), false); */
         /* oled_write_ln(read_keylogs(), false); */
@@ -137,7 +137,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 }
 
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {
-    if (!is_keyboard_master()) return OLED_ROTATION_180;
+    if (!is_keyboard_left()) return OLED_ROTATION_180;
     return rotation;
 }
 
