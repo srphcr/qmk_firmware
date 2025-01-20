@@ -1635,6 +1635,9 @@
     "converter/palm_usb": {
         "target": "converter/palm_usb/stowaway"
     },
+    "clickety_split/leeloo": {
+        "target": "clickety_split/leeloo/rev3"
+    },
     "crkbd": {
         "target": "crkbd/rev1"
     },
