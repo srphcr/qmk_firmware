@@ -1644,9 +1644,6 @@
     "converter/palm_usb": {
         "target": "converter/palm_usb/stowaway"
     },
-    "clickety_split/leeloo": {
-        "target": "clickety_split/leeloo/rev3"
-    },
     "crkbd": {
         "target": "crkbd/rev1"
     },
@@ -1776,9 +1773,6 @@
     "hhkb/ansi": {
         "target": "hhkb/ansi/32u4"
     },
-    "hillside/46": {
-        "target": "hillside/46/0_1"
-    },
     "hillside/48": {
         "target": "hillside/48/0_1"
     },
@@ -1805,9 +1799,6 @@
     },
     "jacky_studio/piggy60/rev1": {
         "target": "jacky_studio/piggy60/rev1/solder"
-    },
-    "jacky_studio/bear_65": {
-        "target": "jacky_studio/bear_65/rev1"
     },
     "jadookb/jkb65": {
         "target": "jadookb/jkb65/r1"
@@ -2123,10 +2114,6 @@
     },
     "ivndbt/neopad": {
         "target": "ivndbt/neopad/rev1"
-        "target": "rookiebwoy/late9/rev1"
-    },
-    "rookiebwoy/neopad": {
-        "target": "rookiebwoy/neopad/rev1"
     },
     "rura66": {
         "target": "rura66/rev1"
